@@ -31,7 +31,8 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        {{$class->links() }}
+                        {{-- {{$class->links() }} --}}
+                        {{$class->links('pagination::bootstrap-4')}}
                     </div>
                 </div>
             </div>
