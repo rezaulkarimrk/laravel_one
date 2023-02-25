@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use DB;
+use App\Models\Student;
 
 class StudentsController extends Controller
 {
@@ -16,17 +17,18 @@ class StudentsController extends Controller
      */
     public function index()
     {
-        $students = DB::table('students')
-        ->join('classes', 'students.class_id', 'classes.id')
+        // $students = DB::table('students')
+        // ->join('classes', 'students.class_id', 'classes.id')
         // ->leftJoin('classes', 'students.class_id', 'classes.id')
         // ->selected('students.*', 'class.name as className')
         // ->rightJoin('classes', 'students.class_id', 'classes.id')
         // ->join('section', 'classes.id', 'section.id')
         // ->crossJoin('classes')
-        ->get();
+        // ->paginate(4)
+        // ->get();
         // return response($students);
         // $students = DB::table('students')->orderBy('id', 'ASC')->get();
-        return view('admin.students.index', compact('students'));
+        // return view('admin.students.index', compact('students'));
 
         // $first = DB::table('students')
         //     ->whereNull('name');
@@ -36,6 +38,9 @@ class StudentsController extends Controller
         //     ->get();
 
         // return response()->json($users);
+
+        $student = Student::all();
+        return response()->json($student);
     }
 
     /**
